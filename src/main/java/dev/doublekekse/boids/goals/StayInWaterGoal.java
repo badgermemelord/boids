@@ -1,5 +1,6 @@
 package dev.doublekekse.boids.goals;
 
+import dev.doublekekse.boids.util.utilMethods;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -25,11 +26,11 @@ public class StayInWaterGoal extends Goal {
         var amount = amount();
 
         if(blockAbove.getFluidState().isEmpty()) {
-            BoidGoal.addDeltaMovement(mob, new Vec3(0, -amount, 0));
+            utilMethods.addDeltaMovement(mob, new Vec3(0, -amount, 0));
         }
 
         if(blockBelow.getFluidState().isEmpty()) {
-            BoidGoal.addDeltaMovement(mob, new Vec3(0, amount, 0));
+            utilMethods.addDeltaMovement(mob, new Vec3(0, amount, 0));
         }
     }
 

@@ -1,5 +1,6 @@
 package dev.doublekekse.boids.goals;
 
+import dev.doublekekse.boids.util.utilMethods;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -56,14 +57,10 @@ public class BoidGoal extends Goal {
         }
 
 
-        addDeltaMovement(mob, random());
-        addDeltaMovement(mob, cohesion());
-        addDeltaMovement(mob, alignment());
-        addDeltaMovement(mob, separation());
-    }
-
-    public static void addDeltaMovement(Mob mob, Vec3 addend) {
-        mob.setDeltaMovement(mob.getDeltaMovement().add(addend));
+        utilMethods.addDeltaMovement(mob, random());
+        utilMethods.addDeltaMovement(mob, cohesion());
+        utilMethods.addDeltaMovement(mob, alignment());
+        utilMethods.addDeltaMovement(mob, separation());
     }
 
     public static List<? extends Mob> getNearbyEntitiesOfSameClass(Mob mob) {

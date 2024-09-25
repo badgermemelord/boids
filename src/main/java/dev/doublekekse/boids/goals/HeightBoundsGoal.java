@@ -1,5 +1,6 @@
 package dev.doublekekse.boids.goals;
 
+import dev.doublekekse.boids.util.utilMethods;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -23,7 +24,7 @@ public class HeightBoundsGoal extends Goal {
 
     @Override
     public void tick() {
-        BoidGoal.addDeltaMovement(mob, bounds());
+        utilMethods.addDeltaMovement(mob, bounds());
     }
 
     public Vec3 bounds() {
