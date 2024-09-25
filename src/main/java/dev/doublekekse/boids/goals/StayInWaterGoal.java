@@ -20,16 +20,16 @@ public class StayInWaterGoal extends Goal {
     @Override
     public void tick() {
         var blockPos = mob.blockPosition();
-        var blockAbove = mob.level().getBlockState(blockPos.above(2));
-        var blockBelow = mob.level().getBlockState(blockPos.below(1));
+        var blockAbove = mob.getLevel().getBlockState(blockPos.above(2));
+        var blockBelow = mob.getLevel().getBlockState(blockPos.below(1));
         var amount = amount();
 
         if(blockAbove.getFluidState().isEmpty()) {
-            mob.addDeltaMovement(new Vec3(0, -amount, 0));
+            BoidGoal.addDeltaMovement(mob, new Vec3(0, -amount, 0));
         }
 
         if(blockBelow.getFluidState().isEmpty()) {
-            mob.addDeltaMovement(new Vec3(0, amount, 0));
+            BoidGoal.addDeltaMovement(mob, new Vec3(0, amount, 0));
         }
     }
 

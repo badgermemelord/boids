@@ -23,7 +23,7 @@ public class HeightBoundsGoal extends Goal {
 
     @Override
     public void tick() {
-        mob.addDeltaMovement(bounds());
+        BoidGoal.addDeltaMovement(mob, bounds());
     }
 
     public Vec3 bounds() {

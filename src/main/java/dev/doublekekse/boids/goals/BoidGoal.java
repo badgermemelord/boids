@@ -55,16 +55,21 @@ public class BoidGoal extends Goal {
             enabled = false;
         }
 
-        mob.addDeltaMovement(random());
-        mob.addDeltaMovement(cohesion());
-        mob.addDeltaMovement(alignment());
-        mob.addDeltaMovement(separation());
+
+        addDeltaMovement(mob, random());
+        addDeltaMovement(mob, cohesion());
+        addDeltaMovement(mob, alignment());
+        addDeltaMovement(mob, separation());
+    }
+
+    public static void addDeltaMovement(Mob mob, Vec3 addend) {
+        mob.setDeltaMovement(mob.getDeltaMovement().add(addend));
     }
 
     public static List<? extends Mob> getNearbyEntitiesOfSameClass(Mob mob) {
         Predicate<Mob> predicate = (_mob) -> true;
 
-        return mob.level().getEntitiesOfClass(mob.getClass(), mob.getBoundingBox().inflate(4.0, 4.0, 4.0), predicate);
+        return mob.getLevel().getEntitiesOfClass(mob.getClass(), mob.getBoundingBox().inflate(4.0, 4.0, 4.0), predicate);
     }
 
     public Vec3 random() {

@@ -2,7 +2,7 @@ package dev.doublekekse.boids;
 
 import dev.doublekekse.boids.config.BoidsConfig;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.minecraft.network.chat.Component;
 
 import static net.minecraft.commands.Commands.literal;
@@ -13,12 +13,12 @@ public class Boids implements ModInitializer {
     @Override
     public void onInitialize() {
         CommandRegistrationCallback.EVENT.register(
-            (dispatcher, registryAccess, environment) -> {
+            (dispatcher, registryAccess) -> {
                 dispatcher.register(
                     literal("boids").requires((source) -> source.hasPermission(2)).then(literal("config").then(literal("reload").executes(ctx -> {
                         CONFIG = BoidsConfig.load();
 
-                        ctx.getSource().sendSuccess(() -> Component.translatable("commands.boids.config.reload"), true);
+                        //ctx.getSource().sendSuccess(() -> Component.translatable("commands.boids.config.reload"), true);
 
                         return 1;
                     })))
